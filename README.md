@@ -40,7 +40,7 @@ To use this project, you need to have the following prerequisites:
 
    ```bash
    cd YourRepository
-   cd GCFucntionsDeploy
+   cd GCFunctionsDeploy
    npm install
    
    
