@@ -1,0 +1,22 @@
+{
+  "functions": [
+    {
+      "source": "GCFunctionsDeploy", 
+      "only": ["function1", "function2"], 
+      "ignore": ["node_modules"] 
+    }
+  ],
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
