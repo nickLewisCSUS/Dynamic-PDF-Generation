@@ -49,13 +49,13 @@ To use this project, you need to have the following prerequisites:
    This script will prompt you for necessary configurations, including Firestore project ID, collection name, app password, email address, google bucket, google cloud run url.
    
 4.  Build docker image and deploy to Google Cloud Run:
-
+##
       docker build -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> .
     
       docker push -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag>
       
       gcloud run deploy <image_name> --image us-central1-docker.pkg.dev/<project_id>/lateximage/<iamge_name>:<image_tag> --platform managed --region us-central1
-
+##
 6. Deploy your Firebase Functions:
 
    ```bash
