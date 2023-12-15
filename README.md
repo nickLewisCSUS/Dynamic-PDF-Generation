@@ -54,7 +54,7 @@ To use this project, you need to have the following prerequisites:
     
       docker push -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag>
       
-      gcloud run deploy <image_name> --image us-central1-docker.pkg.dev/<project_id>/lateximage/<iamge_name>:<image_tag> --platform managed --region us-central1
+      gcloud run deploy <image_name> --image us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> --platform managed --region us-central1
     
 6. Deploy your Firebase Functions:
 
