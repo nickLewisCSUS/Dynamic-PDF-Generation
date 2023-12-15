@@ -11,7 +11,7 @@
 
 ## About
 
-This project demonstrates how to generate dynamic invoice PDFs from Firestore data, store them in Google Cloud Storage, and send them via email using nodemailer. It consists of multiple components, including Firebase Functions, nodemailer, docker iamge, Google Cloud Run, and Google Storage.
+This project demonstrates how to generate dynamic invoice PDFs from Firebase data, store them in Google Cloud Storage, and send them via email using nodemailer. It consists of multiple components, including Firebase Functions, nodemailer, docker iamge, Google Cloud Run, and Google Storage.
 
 ## Features
 
