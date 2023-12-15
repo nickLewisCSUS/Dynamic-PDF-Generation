@@ -1,0 +1,241 @@
+%-------------------------------------------------------------------------------%
+%   Current imports needed                                                      %
+%-------------------------------------------------------------------------------%
+
+% Document article import
+\documentclass{article}
+
+% Supress warnings
+\usepackage{silence}
+
+% Needed for changing page margins
+\usepackage[letterpaper, left=0.5in, right=0.5in, top=0.75in, bottom=0.65in]{geometry}
+
+% text and math
+\usepackage{amsmath}
+
+% Needed for table formatting
+\usepackage{longtable} % For better handling of tabular data when data exceeds page length
+\usepackage{booktabs} % For better table formatting
+\usepackage{xcolor}  % For setting colors
+\usepackage{colortbl} % For table cell coloring
+\usepackage{etoolbox} % Used for creating table row with placeholder data 
+
+% Needed for font editing
+\usepackage{fontspec} % For setting the font
+\usepackage{fancyhdr} % For setting header / footer
+
+% Ignore Font Configuration Errors
+\pdfmapline{+dummy-space <dummy-space.pfb}
+
+% Suppress Font Configuration Warnings
+\WarningFilter{pdftex}{\pdfsuppresswarningpagegroup}
+
+% Suppress Overfull Box Warnings
+\hbadness=10000
+\tolerance=1000
+\emergencystretch=1em
+
+% Disable Font Checking
+\nofiles
+
+% Ignore Font Configuration Errors
+\pdfmapline{+dummy-space <dummy-space.pfb}
+
+%-------------------------------------------------------------------------------%
+%   Customize the invoice details                                               %
+%-------------------------------------------------------------------------------%
+
+\newcommand{\documentTitle}{docTitle} % Variable
+\newcommand{\company}{company} % Variable
+\newcommand{\clientName}{customerName} % Variable
+\newcommand{\clientAddress}{clientAddress} % Variable
+\newcommand{\invoiceDate}{invoiceDate} % Variable
+\newcommand{\invoiceNumber}{invoiceNumber} % Variable
+\newcommand{\reference}{reference} % Variable
+\newcommand{\subtotal}{subtotal} % Variable
+\newcommand{\totalTax}{totalTax} % Variable
+\newcommand{\total}{total} % Variable
+\newcommand{\dueDate}{dateDue} % Variable
+\newcommand{\tabularData}{products} % Variable
+
+%-------------------------------------------------------------------------------%
+%   Advanced Settings                                                           %
+%-------------------------------------------------------------------------------%
+
+% Needed for table text alighnment
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Left alighnment (L)
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Center alighnment (C)
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Right anighnment (R)
+
+% Header / Footer Settings
+\pagestyle{fancy}
+\fancyhf{} % Clear default footer / header formatting
+\renewcommand{\headrulewidth}{0pt} % Remove the horizontal line in the header
+\fancyfoot[L]{\raisebox{20pt}{\fontsize{7pt}{7pt}\selectfont{\clientAddress}} } % Add your text to the left side of the footer
+
+%-------------------------------------------------------------------------------%
+%   Beginning of document                                                       %
+%-------------------------------------------------------------------------------%
+
+\begin{document}
+    
+    %============ Document title table start ============%
+    
+    \begin{center}
+        \begin{tabular}{@{} p{0.5\textwidth} @{} p{0.25\textwidth} @{} p{0.20\textwidth}}
+        
+            % -- Left text, (title / comnpany) start -- %
+            \begin{flushleft}
+                {\Huge {\documentTitle}} \\ % Document title var
+                \vspace {5mm}
+                \hspace {0.5in}\textsc {\company} % Company name var
+                
+            \end{flushleft} & 
+            
+            % -- Center, quick details of invoice (date/number/reference) -- %
+            \begin{flushleft}
+                \textbf {Invoice Date} \\
+                \invoiceDate \\ % date var
+                
+                \vspace {2mm}
+                \textbf {Invoice Number} \\ 
+                \invoiceNumber \\ % number var
+                
+                \vspace {2mm}
+                \textbf {Reference} \\
+                \reference \\ % Reference var
+                
+            \end{flushleft} &
+            
+            % -- Right Text, client Address -- %
+            \begin{flushleft}
+                \clientAddress % Address var
+                
+            \end{flushleft}
+            
+        \end{tabular}
+    \end{center}
+    
+    %============ Document title table end ============%
+    
+    
+    \vspace{2cm} % Table line header seperation
+    
+    
+    %============ Data tabel to hold tabular data start ============%
+
+    \renewcommand{\arraystretch}{1.5} % Adjust table padding to be 1.5x for data table and data table sums and totals
+    \begin{center}
+        \begin{longtable}{L{0.42\textwidth} R{0.08\textwidth} R{0.15\textwidth} R{0.10\textwidth} R{0.15\textwidth}}
+
+            % -- Header text for data table (Description, Quantity, Unit Price, Amount USD) -- %
+            \textbf{Description} & \textbf{Quantity} & \textbf{Unit Price} & \textbf{Tax} & \textbf{Amount USD} \\
+            \midrule[1pt]
+            \endfirsthead
+
+            % -- Adding data rows contained within the dataRows List -- %
+            \arrayrulecolor{black!30} % Set seperating line between rows dimmer
+            \tabularData \\
+            \midrule
+            \arrayrulecolor{black} % Set seperating line default dimmness
+            
+            
+        \end{longtable}
+    \end{center}
+    
+    %============ Data tabel to hold tabular data end ============%
+
+
+    %============ Data table sums and totals table start ============%
+    
+    \vspace{-43pt} % Space between Data table and Data table sums and totals
+    \begin{flushright} % Position table on right side of document
+        \begin{tabular}{R{0.30\textwidth} R{0.15\textwidth}}
+            % -- Subtotal and result cells -- %
+            \text{Subtotal} &
+            \text{\subtotal} \\
+    
+            % -- Total tax and result cells -- %
+            \fontsize{10pt}{10pt}\selectfont{\text{TOTAL TAX}} & % Font for total tax text (10pt)
+            \text{\totalTax} \\
+    
+            % -- Total USD and result cells -- %
+            \midrule[1pt]
+            \fontsize{10pt}{10pt}\selectfont{\textbf{TOTAL USD}} & % Font for total usd text (10pt)
+            \text{\total} \\
+            
+        \end{tabular}
+    \end{flushright}
+    \renewcommand{\arraystretch}{1} % Adjust table padding to be 1.0x (default)
+    
+    %============ Data table sums and totals table end ============%
+
+    
+    % -- Due Date -- %
+    \vspace{5mm}
+    \begin{flushleft}
+        \fontsize{12pt}{12pt}\selectfont{% Set custom font for Due Date (12pt)
+            \textbf{Due Date: \dueDate} % Due date var
+        }
+    \end{flushleft}
+
+
+    %===============================================================================%
+    %   Payment Details Page                                                        %
+    %===============================================================================%
+
+
+    \newpage            % Start a new page
+    \vspace*{\fill}     % Start text at bottom of page
+
+    
+    %============ Payment details table ============%
+    
+    \begin{flushleft}
+        \rule{\textwidth}{0.3pt}\vspace{-11pt}  % Cut here line (above table)
+    \end{flushleft}
+    
+    \fontsize{10pt}{10pt} % Set custome font
+    \begin{center}
+        \begin{tabular}{@{}p{0.5\textwidth}  @{}p{0.474\textwidth}}
+            % Left
+            \begin{tabular}{@{\hskip 1.5pt}p{0.45\textwidth}}
+                {\Huge{PAYMENT ADVICE}} \\ 
+                \vspace{10pt}
+                \begin{tabular}{@{\hskip 1.5pt}R{0.075\textwidth} @{\hskip 5pt}p{0.22\textwidth}}
+                    To: & 
+                    \clientAddress \\   
+                \end{tabular}
+            \end{tabular}
+            &
+            % Right
+            \fontsize{9pt}{9pt} % Set custome fonts
+            \begin{tabular}{@{\hskip 1.5pt}p{0.46\textwidth}}
+                \begin{tabular}{@{}p{0.16\textwidth} @{}p{0.30\textwidth}}
+                    \vspace{5pt}\hspace{1pt}\textbf{Customer} & \vspace{5pt}\text{Evil Inc} \\
+                    \vspace{-4pt}\hspace{1pt}\textbf{Invoice Number} & \vspace{-4pt}\text{J5143-0831} \\
+                    
+                    \arrayrulecolor{black!30}
+                    \midrule
+                    \arrayrulecolor{black}
+                    
+                    \vspace{-6pt}\hspace{1pt}\textbf{Amount Due} & \vspace{-6pt}\textbf{14830.62} \\
+                    \vspace{-4pt}\hspace{1pt}\textbf{Due Date} & \vspace{-4pt}\dueDate \\
+                    \vspace{2pt}\hspace{1pt}\textbf{Amount Enclosed} &  \\ 
+                        & \vspace{-13pt}\rule{0.30\textwidth}{0.4pt} \\
+
+                        & \vspace{-14pt}\centering\fontsize{8pt}{8pt}\selectfont{Enter the amount you are paying above} \\
+                \end{tabular}
+            \end{tabular}
+        \end{tabular}
+    \end{center}
+    
+    %============ End of Payment details table ============%
+    
+\end{document}
+
+%-------------------------------------------------------------------------------%
+%   End of document                                                             %
+%-------------------------------------------------------------------------------%
