@@ -68,7 +68,9 @@ To use this project, you need to have the following prerequisites:
   This project listens for changes in specific Firestore documents. When a document with a designated "create" state is detected, it triggers the following process:
 
 1. Data Fetching: Data is fetched from Firestore using fireStoreDataHandler. It is then used to fill the in voice template's palceholders using fillTemplate. Assumes, the template "invoice.tex" is already stored in you own Google Bucket.
+   
    a.) refer to "invoice.tex" template to see what placeholders are needed in the Firestore Database in order to fill the template.
+   
    b.) "invoice.tex" utilizes tabular data and uses the placeholder "products" as the table data. Expects firestore document to have field data named "products" as an array that takes in references from other documents       that contain data such as item description, total, tax, etc.
 
 3. PDF Generation: A invoice PDF is generated from the fetched data using GenerateTest.
