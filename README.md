@@ -76,13 +76,13 @@ To use this project, you need to have the following prerequisites:
 5. Update Document: The document is updated with the location of the pdf if it is store in storage correctly in the bucket.
 
 
-   Also, the project listens for the "sendEmailFlag" in the field data, set to true as a boolean, in order to send email.
+Also, the project listens for the "sendEmailFlag" in the field data, set to true as a boolean, in order to send email.
 
-1. Emailing: Use nodemailer in emailer to send email once "sendEmailFlag" is set to true as a boolean.
+   1. Emailing: Use nodemailer in emailer to send email once "sendEmailFlag" is set to true as a boolean.
 
-2. Email: Document contains field "recipientEmail" and has the recipient gmail in the text field where the user wants to send email to.
+   2. Email: Document contains field "recipientEmail" and has the recipient gmail in the text field where the user wants to send email to.
 
-3. Email status: Document can contain a field named "emailSent" where it contains a boolean on whether the email was sent.
+   3. Email status: Document can contain a field named "emailSent" where it contains a boolean on whether the email was sent.
    
 
 
