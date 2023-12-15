@@ -93,9 +93,9 @@ Also, the project listens for the "sendEmailFlag" in the field data, set to true
 
 
 
-   Please refer to the code for more details on how this process is implemented.
-
 
 ## Author
-
+   
   - nicholaslewis3452@gmail.com
+    Please refer to the code for more details on how this process is implemented.
+    
