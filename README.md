@@ -47,6 +47,7 @@ To use this project, you need to have the following prerequisites:
    ```bash
    node deploymentScript.js
    This script will prompt you for necessary configurations, including Firestore project ID, collection name, app password, email address, google bucket, google cloud run url.
+   
 4.  Build docker image and deploy to Google Cloud Run:
 
    docker build -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> .
