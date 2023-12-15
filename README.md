@@ -79,7 +79,6 @@ To use this project, you need to have the following prerequisites:
 
 
 
-   
 
 
 Also, the project listens for the "sendEmailFlag" in the field data, set to true as a boolean, in order to send email.
@@ -90,10 +89,6 @@ Also, the project listens for the "sendEmailFlag" in the field data, set to true
 
    3. Email status: Document can contain a field named "emailSent" where it contains a boolean on whether the email was sent.
    
-
-
-
-
 
 
 ## Author
