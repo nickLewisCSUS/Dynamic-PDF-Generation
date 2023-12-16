@@ -26,7 +26,7 @@ To use this project, you need to have the following prerequisites:
 - Firebase project with Firestore enabled (Make sure to know your project ID). The link here will show you the steps: https://firebase.google.com/docs/firestore/quickstart
 - app password for gmail being used. To know how to get app password go to link here: https://support.google.com/accounts/answer/185833?hl=en
 - Node.js version 18 or higher and npm installed locally. Here is the official node.js website: https://nodejs.org/en
-- Google Cloud Storage is enabled and "invoice.tex" is uploaded in your own Google Bucket
+- Google Cloud Storage is enabled and "invoice.tex" is uploaded in your own Google Bucket: Here is how to get Google Bucket: https://cloud.google.com/storage/docs/creating-buckets
 - Docker Desktop is installed on your local machine and is open for use. Here is the link to install docker: https://www.docker.com/products/docker-desktop/
 
 ### Installation
