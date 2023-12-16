@@ -41,9 +41,9 @@ To use this project, you need to have the following prerequisites:
       ```bash
       cd YourRepository
       cd LatexDockerFolder
-      docker build -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> .
-      docker push -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag>
-      gcloud run deploy <image_name> --image us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> --platform managed --region us-central1
+      docker build -t us-central1-docker.pkg.dev/<firebase_project_id>/lateximage/<image_name>:<image_tag> .
+      docker push -t us-central1-docker.pkg.dev/<firebase_project_id>/lateximage/<image_name>:<image_tag>
+      gcloud run deploy <image_name> --image us-central1-docker.pkg.dev/<firebase_project_id>/lateximage/<image_name>:<image_tag> --platform managed --region us-central1
 
    Google Cloud Run url should pop up after deployment. Make sure to save it.
 
