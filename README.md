@@ -73,9 +73,9 @@ To use this project, you need to have the following prerequisites:
 
 1. Data Fetching: Data is fetched from Firestore using fireStoreDataHandler. It is then used to fill the invoice.tex template's placeholders using fillTemplate. Assumes, the template "invoice.tex" is already stored in your own Google Bucket.
    
-   a.) refer to "invoice.tex" template to see what placeholders are needed in the Firestore Database in order to fill the template.
+   a.) refer to "invoice.tex" template to see what placeholders are needed in the Firestore Database field and text boxes within the document. These are used to  the template.
    
-   b.) "invoice.tex" utilizes tabular data and uses the placeholder "products" as the table data. Expects firestore document to have field data named "products" as an array that takes in references from other documents. It should contain data such as item description, total, tax, etc.
+   b.) "invoice.tex" utilizes tabular data and uses the placeholder "products" as the table data. Expects firestore document to have field data named "products" as an array that takes in references from other documents. References should contain data such as item description, total, tax, etc.
 
 3. PDF Generation: A invoice PDF is generated from the fetched data using generateTest. generateTest uses a http request from google cloud run wiht the docker image that does the conversion process
 
