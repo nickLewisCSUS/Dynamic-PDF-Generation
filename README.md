@@ -23,10 +23,11 @@ This project demonstrates how to generate dynamic invoice PDFs from Firebase dat
 
 To use this project, you need to have the following prerequisites:
 
-- Firebase project with Firestore enabled
-- app password for gmail being used
-- Node.js and npm installed locally
-- Google Cloud Storage is enabled and "invoice.tex" is stored in your own Google Bucket
+- Firebase project with Firestore enabled (Make sure to know your project ID). The link here will show you the steps: https://firebase.google.com/docs/firestore/quickstart
+- app password for gmail being used. To know how to get app password go to link here: https://support.google.com/accounts/answer/185833?hl=en
+- Node.js version 18 or higher and npm installed locally. Here is the official node.js website: https://nodejs.org/en
+- Google Cloud Storage is enabled and "invoice.tex" is uploaded in your own Google Bucket
+- Docker Desktop is installed on your local machine and is open for use. Here is the link to install docker: https://www.docker.com/products/docker-desktop/
 
 ### Installation
 
@@ -34,6 +35,7 @@ To use this project, you need to have the following prerequisites:
 
    ```bash
    git clone https://github.com/YourUsername/YourRepository.git
+   
 2. Install project dependencies
 
    ```bash
@@ -42,19 +44,20 @@ To use this project, you need to have the following prerequisites:
    npm install
    
    
-3. Configure your project by running the 'deploymentScript.js':
+3.  Build docker image and deploy to Google Cloud Run (Docker desktop must be isntalled on your local machine and opened in order to build image):
+
+      ```bash
+      docker build -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> .
+      docker push -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag>
+      gcloud run deploy <image_name> --image us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> --platform managed --region us-central1
+
+   Google Cloud Run url should pop up after deployment. Make sure to save it.
+      
+4. Configure your project by running the 'deploymentScript.js':
 
    ```bash
    node deploymentScript.js
    This script will prompt you for necessary configurations, including Firestore project ID, collection name, app password, email address, google bucket, google cloud run url.
-   
-4.  Build docker image and deploy to Google Cloud Run:
-   
-      docker build -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> .
-    
-      docker push -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag>
-      
-      gcloud run deploy <image_name> --image us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> --platform managed --region us-central1
     
 6. Deploy your Firebase Functions:
 
@@ -67,18 +70,17 @@ To use this project, you need to have the following prerequisites:
 
   This project listens for changes in specific Firestore documents. When a document with a designated "create" state is detected, it triggers the following process:
 
-1. Data Fetching: Data is fetched from Firestore using fireStoreDataHandler. It is then used to fill the in voice template's palceholders using fillTemplate. Assumes, the template "invoice.tex" is already stored in you own Google Bucket.
+1. Data Fetching: Data is fetched from Firestore using fireStoreDataHandler. It is then used to fill the invoice.tex template's placeholders using fillTemplate. Assumes, the template "invoice.tex" is already stored in your own Google Bucket.
    
    a.) refer to "invoice.tex" template to see what placeholders are needed in the Firestore Database in order to fill the template.
    
-   b.) "invoice.tex" utilizes tabular data and uses the placeholder "products" as the table data. Expects firestore document to have field data named "products" as an array that takes in references from other documents       that contain data such as item description, total, tax, etc.
+   b.) "invoice.tex" utilizes tabular data and uses the placeholder "products" as the table data. Expects firestore document to have field data named "products" as an array that takes in references from other documents. It should contain data such as item description, total, tax, etc.
 
-3. PDF Generation: A invoice PDF is generated from the fetched data using GenerateTest.
+3. PDF Generation: A invoice PDF is generated from the fetched data using generateTest. generateTest uses a http request from google cloud run wiht the docker image that does the conversion process
 
-4. Storage: Once pdf is generated it stores the invoice pdf in a folder named as the document id inside user's Google Bucket.
+4. Storage: Once pdf is generated, it stores the invoice pdf in a folder named as the document id inside user's Google Bucket as well as the filledTemplate.
 
-5. Update Document: The document is updated with the location of the pdf if it is store in storage correctly in the bucket.
-
+5. Update Document: The document is updated with the location of the pdf.
 
 
 ##
