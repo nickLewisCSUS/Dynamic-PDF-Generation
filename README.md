@@ -36,7 +36,7 @@ To use this project, you need to have the following prerequisites:
    ```bash
    git clone https://github.com/YourUsername/YourRepository.git
    
-2.  Build docker image and deploy to Google Cloud Run (Docker desktop must be isntalled on your local machine and opened in order to build image):
+2.  Build docker image and deploy to Google Cloud Run (Docker desktop must be installed on your local machine and opened in order to build image):
 
       ```bash
       cd YourRepository
