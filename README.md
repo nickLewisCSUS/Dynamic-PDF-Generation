@@ -1,4 +1,4 @@
-# PDF Generation, Storage, and Email Delivery with Firebase
+# PDF Generation, Storage, and Email Delivery with Google Firebase
 
 
 ## Table of Contents
