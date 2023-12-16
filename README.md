@@ -36,22 +36,23 @@ To use this project, you need to have the following prerequisites:
    ```bash
    git clone https://github.com/YourUsername/YourRepository.git
    
-2. Install project dependencies
-
-   ```bash
-   cd YourRepository
-   cd GCFunctionsDeploy
-   npm install
-   
-   
-3.  Build docker image and deploy to Google Cloud Run (Docker desktop must be isntalled on your local machine and opened in order to build image):
+2.  Build docker image and deploy to Google Cloud Run (Docker desktop must be isntalled on your local machine and opened in order to build image):
 
       ```bash
+      cd YourRepository
+      cd LatexDockerFolder
       docker build -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> .
       docker push -t us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag>
       gcloud run deploy <image_name> --image us-central1-docker.pkg.dev/<project_id>/lateximage/<image_name>:<image_tag> --platform managed --region us-central1
 
    Google Cloud Run url should pop up after deployment. Make sure to save it.
+
+3. Install project dependencies
+
+   ```bash
+   cd ..
+   cd GCFunctionsDeploy
+   npm install
       
 4. Configure your project by running the 'deploymentScript.js':
 
