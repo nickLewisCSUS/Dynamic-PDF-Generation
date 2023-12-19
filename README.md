@@ -69,7 +69,7 @@ To use this project, you need to have the following prerequisites:
    
 ## Usage
 
-![Local Image](firestore_database_image.JP)
+![Local Image](firestore_database_image.png)
 
 
   This project listens for changes in specific Firestore documents. When a document with a designated "create" state is detected, it triggers the following process:
