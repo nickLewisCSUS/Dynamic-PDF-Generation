@@ -89,7 +89,8 @@ To use this project, you need to have the following prerequisites:
 4. Storage: Once pdf is generated, it stores the invoice pdf in a folder named as the document id inside user's Google Bucket as well as the filledTemplate.
 
 5. Update Document: The document is updated with the location of the pdf.
-      ![Local Image](images/location.JPG)
+   
+   ![Local Image](images/location.JPG)
 
 
 ##
