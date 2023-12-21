@@ -78,7 +78,7 @@ To use this project, you need to have the following prerequisites:
    
    a.) refer to "invoice.tex" template to see what placeholders are needed in the Firestore Database field and text boxes within the document. These are used to  the template.
    
-   b.) "invoice.tex" utilizes tabular data and uses the placeholder "products" as the table data. Expects firestore document to have field data named "products" as an array that takes in references from other documents. References should contain data such as item description, total, tax, etc.
+   b.) "invoice.tex" utilizes tabular data and uses the placeholder "products" as the table data. Expects firestore document to have field data named "products" as an array that takes in references from other collections. References should contain data such as item description, total, tax, etc.
 
 3. PDF Generation: A invoice PDF is generated from the fetched data using generateTest. GenerateTest uses a http request from google cloud run with the docker image that does the conversion process
 
