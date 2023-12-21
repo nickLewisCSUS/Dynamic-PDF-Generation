@@ -74,6 +74,8 @@ To use this project, you need to have the following prerequisites:
 
   This project listens for changes in specific Firestore documents. When a document with a designated "create" state is detected, it triggers the following process:
 
+  ![Local Image](images/state.JPG)
+
 1. Data Fetching: Data is fetched from Firestore using fireStoreDataHandler. It is then used to fill the invoice.tex template's placeholders using fillTemplate. Assumes, the template "invoice.tex" is already stored in your own Google Bucket.
    
    a.) refer to "invoice.tex" template to see what placeholders are needed in the Firestore Database field and text boxes within the document. These are used to  the template.
