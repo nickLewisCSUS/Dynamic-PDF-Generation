@@ -89,7 +89,7 @@ To use this project, you need to have the following prerequisites:
 4. Storage: Once pdf is generated, it stores the invoice pdf in a folder named as the document id inside user's Google Bucket as well as the filledTemplate.
 
 5. Update Document: The document is updated with the location of the pdf.
-      ![Local Image](location/state.JPG)
+      ![Local Image](images/location.JPG)
 
 
 ##
@@ -101,7 +101,7 @@ Also, the project listens for the "sendEmailFlag" in the field data, set to true
    1. Emailing: Use nodemailer in emailer to send email once "sendEmailFlag" is set to true as a boolean.
 
    2. Email: Document contains field "recipientEmail" and has the recipient gmail in the text field where the user wants to send email to.
-      ![Local Image](email/state.JPG)
+      ![Local Image](images/email.JPG)
 
    3. Email status: Document can contain a field named "emailSent" where it contains a boolean on whether the email was sent.
 
