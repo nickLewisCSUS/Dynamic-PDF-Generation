@@ -82,6 +82,8 @@ To use this project, you need to have the following prerequisites:
    
    b.) "invoice.tex" utilizes tabular data and uses the placeholder "products" as the table data. Expects firestore document to have field data named "products" as an array that takes in references from other collections. References should contain data such as item description, total, tax, etc.
 
+   ![Local Image](images/products.JPG)
+
 3. PDF Generation: A invoice PDF is generated from the fetched data using generateTest. GenerateTest uses a http request from google cloud run with the docker image that does the conversion process
 
 4. Storage: Once pdf is generated, it stores the invoice pdf in a folder named as the document id inside user's Google Bucket as well as the filledTemplate.
@@ -93,12 +95,15 @@ To use this project, you need to have the following prerequisites:
 
 Also, the project listens for the "sendEmailFlag" in the field data, set to true as a boolean, in order to send email.
 
+![Local Image](images/sendEmailFlag.JPG)
+
    1. Emailing: Use nodemailer in emailer to send email once "sendEmailFlag" is set to true as a boolean.
 
    2. Email: Document contains field "recipientEmail" and has the recipient gmail in the text field where the user wants to send email to.
 
    3. Email status: Document can contain a field named "emailSent" where it contains a boolean on whether the email was sent.
-   
+
+   ![Local Image](images/status.JPG)
 
 
 ## Author
